@@ -3,6 +3,7 @@ import './App.css';
 import { Header } from './components/header/header.component';
 import { Board } from './components/board/board.component';
 import { AddScore } from './components/add-score/add-score.component';
+import Leaderboard from './components/Leaderboard.js';
 
 import { v4 as uuidv4 } from 'uuid';
 import { baseURL, gameID } from './config';
@@ -44,18 +45,26 @@ class App extends React.Component {
         <Header title="Leaderboard" />
         <main>
           <div className="container container--flex">
+            {/* Original Board Component */}
             <Board
               title="scores"
               scores={this.state.scores}
               loading={this.state.loading}
               loadLeaderboard={this.loadLeaderboard}
             />
+  
+            {/* Enhanced Leaderboard Component */}
+            <Leaderboard scores={this.state.scores} />
+  
+            {/* AddScore Component */}
             <AddScore loadLeaderboard={this.loadLeaderboard} />
           </div>
         </main>
       </div>
     );
   }
+  
 }
 
 export default App;
+
